@@ -17,11 +17,22 @@ function renderItems() {
 function renderItem(text) {
 	const htmlElement = itemTemplate.cloneNode(true);
 	htmlElement.querySelector('.item__text').innerText = text;
+
+	setEventListeners(htmlElement);
+
 	list.appendChild(htmlElement);
 }
 
 function handleSubmit() {
 	renderItem(formInput.value);
+}
+
+function handleDelete(evt) {
+	evt.target.closest('.list__item').remove();
+}
+
+function setEventListeners(element) {
+	element.querySelector('.delete').addEventListener('click', handleDelete);
 }
 
 formButton.addEventListener('click', handleSubmit);
