@@ -31,8 +31,14 @@ function handleDelete(evt) {
 	evt.target.closest('.list__item').remove();
 }
 
+function handleDuplicate(evt) {
+	const text = evt.target.closest('.list__item').querySelector('.item__text').textContent;
+	renderItem(text);
+}
+
 function setEventListeners(element) {
 	element.querySelector('.delete').addEventListener('click', handleDelete);
+	element.querySelector('.duplicate').addEventListener('click', handleDuplicate);
 }
 
 formButton.addEventListener('click', handleSubmit);
